@@ -17,7 +17,7 @@ const home=()=>
         </Link>
 
 
-    <Link to='/new'>
+    <Link to='/dreamer'>
         <h3>New Project</h3>
         <p>Este es el proyecto que blablablbablablablab</p>
         </Link>

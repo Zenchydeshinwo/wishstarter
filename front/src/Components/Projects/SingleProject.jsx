@@ -18,7 +18,7 @@ class SingleProject extends Component {
         axios.get("").then(response=>{
             const projectId= this.props.match.params.projectId
             const project = response.data.filter(project=>{
-                return project._id == projectId
+                return project._id === projectId
             })[0];
             this.setState({project:project})
         })
@@ -34,8 +34,8 @@ class SingleProject extends Component {
                 <img src={this.state.project.imageurl} alt='Img bir'/>
                 <h1>{this.state.project.name}</h1>
                 <p>{this.state.project.description}</p>
-                <p>Dreamer: {this.state.project.creator}</p>
-                <p>Maker/s: {this.state.project.makers}</p>
+                <p>Dreamer: {this.state.project.dreamer}</p>
+                <p>Maker/s: {this.state.project.maker}</p>
             </div>
         </div>
     )

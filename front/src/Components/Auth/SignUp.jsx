@@ -55,7 +55,9 @@ class Signup extends Component {
       </form>
 <h1>y</h1>
       <p>Already have account? 
-          <Link to={"/"}> Login</Link>
+          <Link to={"/login"}> Login</Link>
+          
+          <Link to={"/"}> Home</Link>
       </p>
 
     </div>

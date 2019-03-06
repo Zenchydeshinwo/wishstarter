@@ -95,3 +95,6 @@ app.use('/api', require('./routes/task-routes'));
       
 
 module.exports = app;
+
+
+//y=Math.cos((alfa/(2*PI)))

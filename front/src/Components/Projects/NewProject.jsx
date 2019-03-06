@@ -1,37 +1,38 @@
 import React, { Component } from 'react';
-import AuthService from './Auth-service';
+import Projectservice from './Project-service';
 
 import { Link } from 'react-router-dom';
 
 
 
-class Signup extends Component {
+class NewProject extends Component {
   constructor(props){
     super(props);
     this.state = { 
-      username: '', 
-      password: '',
-      mensaje: ''  
+      title: '', 
+      description: '',
+      dreamer:''
+        //Incluir aqui OnbejctId y maker
     };
-    this.service = new AuthService();
+    this.action = new Projectservice();
   }
 
   // handleChange() and handleSubmit() will be added here
-  handleFormSubmit = (event) => {
+  handleTitleSubmit = (event) => {
     event.preventDefault();
-    const username = this.state.username;
-    const password = this.state.password;
+    const title = this.state.title;
+    const description = this.state.description;
   
-    this.service.signup(username, password)
+    this.action.registerProject(title, description)
     .then( response => {
       this.setState({
-        username: "", 
-        password: "",
+        title: "", 
+        description: ""
+        
     });
-
-      // this.setState({...this.state,
-      // mensaje: response.data.message})
-      this.props.getUser(response)
+    this.props.getUser(response)
+    
+    console.log('Esto es para ver que dato me llega en el response de user', response)
       
     })
     .catch( error => console.log(error) )
@@ -43,14 +44,31 @@ class Signup extends Component {
   }
 
   render(){
+    console.log('hi!!!')
     return(
       // more code will be added here
-    <h1>Aqui va un formulario</h1>
+      <div>
+      <Link to={'/'}>Home</Link>
+    <h1>Introduce los datos de tu proyecto</h1>
+
+    <form onSubmit={this.handleTitleSubmit}>
+    <label> Title </label>
+    <input type='text' name='title' value={this.state.title} onChange={eve=>this.handleChange(eve)} />
+    <br/><br/>
+    
+    <label> Description </label>
+    <input type='text' name='description' value={this.state.description} onChange={eve=>this.handleChange(eve)} />
+    <br/><br/>
+
+    <input type='submit' value='NewProject'/>
+
+    </form>
+    </div>
     )
   }
 }
 
-export default Signup; 
+export default NewProject; 
 
 
 

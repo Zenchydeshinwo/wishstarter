@@ -10,6 +10,7 @@ class Navbar extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    debugger
     this.setState({...this.state, loggedInUser: nextProps["userInSession"]});
   }
 
@@ -22,6 +23,7 @@ class Navbar extends Component {
   }
 
   render(){
+    debugger
     if(this.state.loggedInUser){
       return(
         <nav className="nav-style">

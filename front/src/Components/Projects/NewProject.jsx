@@ -2,62 +2,107 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
+
+
+
 class NewProject extends Component {
     constructor(props) {
       super(props);
-  
+      
+
+
+
       this.state = {
-        name: "",
+        title: "",
         description: "",        
         dreamer: "",
         maker: ""
 
       };
+
+      
+      let serviceAxios = axios.create({
+        baseURL: `${process.env.REACT_APP_URL}/api`,
+        withCredentials: true
+      })
+      this.serviceAxios = serviceAxios;
+      
     }
 
     handleNameInput = e => {
-        this.setState({
-          ...this.props.myProject,
-          name: e.target.value
+      let newState = {...this.state}
+      newState.title=e.target.value
+        this.setState(newState,()=>{
+          console.log(this.state.title)
         });
       };
 
       handleDescriptionInput = e => {
         this.setState({
-          ...this.props.myProject,
+          ...this.state,
           description: e.target.value
         });
       };
 
-      handleDreamerInput = e => {
-        this.setState({
-          ...this.props.myProject,
-          dreamer: e.target.value
-        });
-      };
+      // handleDreamerInput = e => {
+      //   this.setState({
+      //     ...this.props.myProject,
+      //     dreamer: e.target.value
+      //   });
+      // };
 
-      handleMakerInput = e => {
-        this.setState({
-          ...this.props.myProject,
-          maker: e.target.value
-        });
-      };
+      // handleMakerInput = e => {
+      //   this.setState({
+      //     ...this.props.myProject,
+      //     maker: e.target.value
+      //   });
+      // };
     
       handleFormSubmit = e => {
-        e.preventDefault();
+        e.preventDefault(); 
     
         console.log(this.state)
         //direccion a la que enviar el nuevo proyecto
-        axios.post("", this.state)
+        this.serviceAxios.post("/newProject", {
+          name: this.state.title,
+          description: this.state.description
+        })
         .then(response => {
           console.log(response)
           // this.setState({ project: response.data });
+          this.setState({
+                   
+          title: "",
+          description: "",
+          // tasks: [{type: Schema.Types.ObjectId, ref: 'Task'}],
+          // owner: {type: Schema.Types.ObjectId, ref: 'User'}
+          })
         })
         .catch(err => {
           console.log(err);
         });
       };
 
+
+
+
+
+
+      // handleFormSubmit = e => {
+      //   e.preventDefault();
+    
+      //   console.log(this.state)
+      //   //direccion a la que enviar el nuevo proyecto
+      //   axios.post("", this.state)
+      //   .then(response => {
+      //     console.log(response)
+      //     // this.setState({ project: response.data });
+      //   })
+      //   .catch(err => {
+      //     console.log(err);
+      //   });
+      // };
+    
 
       render() {
         return (
@@ -67,16 +112,16 @@ class NewProject extends Component {
               <div className="form-group">
 
                 <label>Name:</label>
-                <input type="text" className="form-control" name="Name" value={this.state.name} onChange={e => this.handleNameInput(e)} />
+                <input type="text" className="form-control" name="Name"  onChange={e => this.handleNameInput(e)} />
     
                 <label>Description:</label>
-                <input type="text" className="form-control" name="description" value={this.state.description} onChange={e => this.handleDescriptionInput(e)} />
+                <input type="text" className="form-control" name="description"  onChange={e => this.handleDescriptionInput(e)} />
 
-                <label>Dreamer:</label>
-                <input type="text" className="form-control"  name="dreamer"  value={this.state.dreamer} onChange={e => this.handleDreamerInput(e)} />
+                {/* <label>Dreamer:</label>
+                <input type="text" className="form-control"  name="dreamer"   onChange={e => this.handleDreamerInput(e)} /> */}
     
                 <label>Maker:</label>
-                <input  type="text"  className="form-control"  name="maker"  value={this.state.maker}  onChange={e => this.handleMakerInput(e)} />
+                <input  type="text"  className="form-control"  name="maker"   onChange={e => this.handleMakerInput(e)} />
                 
               </div>
     
@@ -85,6 +130,7 @@ class NewProject extends Component {
           </div>
         );
       }
-    }
+    
+  }
   
-    export default NewProject;
+export default NewProject;

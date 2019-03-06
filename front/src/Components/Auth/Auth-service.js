@@ -12,29 +12,36 @@ export default class AuthService {
     this.serviceAxios = serviceAxios;
   }
 
-  signup = (username, password,) => {
+  signup = (username, password) => {
     return this.serviceAxios.post('/signup', { username, password })
-      .then(response => {return response})
+      .then(response => {return response.data})
       .catch(err => console.log(err))
   }
 
   login = (username, password) => {
     return this.serviceAxios.post('/login', { username, password })
-      .then(response => {return response})
+      .then(response => {return response.data})
       .catch(err => console.log(err))
   }
 
   logout = () => {
-    return this.serviceAxios.post('/logout', {})
+    return this.serviceAxios.get('/logout', {})
       .then(response => response.data)
       .catch(err => console.log(err))
   }
 
   loggedin = () => {
     return this.serviceAxios.get('/loggedin')
-      .then(response => response.data)
-      .catch(err => console.log(err))
+      .then(response => {
+        return response.data
+      })
+      .catch(err => {
+        return null
+      })
   }
-
+  // nameProject = (username, password,) => {
+  //   return this.serviceAxios.post('/newProject', { username, password })
+  //     .then(response => {return response})
+  //     .catch(err => console.log(err))
   
 }

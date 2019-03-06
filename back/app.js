@@ -8,11 +8,11 @@ const hbs          = require('hbs');
 const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
-const cors          = require('cors')
-const session    = require("express-session");
-const MongoStore = require('connect-mongo')(session);
-const flash      = require("connect-flash");
-    
+const cors         = require('cors')
+const session      = require("express-session");
+const MongoStore   = require('connect-mongo')(session);
+const flash        = require("connect-flash");
+const authRoutes   = require('./routes/auth-routes'); 
 
 mongoose
   .connect('mongodb://localhost/back', {useNewUrlParser: true})
@@ -84,8 +84,11 @@ require('./passport')(app);
 const index = require('./routes/index');
 app.use('/', index);
 
-const authRoutes = require('./routes/auth');
-app.use('/auth', authRoutes);
+// const authRoutes = require('./routes/auth');
+// app.use('/auth', authRoutes);
+
+app.use('/api', require('./routes/auth-routes'));
+app.use('/api', authRoutes);
 
 app.use('/api', require('./routes/project-routes'));
 app.use('/api', require('./routes/task-routes'));

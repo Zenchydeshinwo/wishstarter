@@ -5,8 +5,8 @@ const router  = express.Router();
 
 const mongoose = require('mongoose');
 
-const Project = require('../models/project-model');
-const Task = require('../models/task-model'); // <== !!!
+const Project = require('../models/Project');
+const Task = require('../models/Task'); // <== !!!
 
 
 

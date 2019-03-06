@@ -11,7 +11,7 @@ const home=()=>
         <p>Este es el proyecto que blablablbablablablab</p>
         </Link>
 
-        <Link to='/makers'>
+    <Link to='/makers'>
         <h3>Makers</h3>
         <p>Este es la proyecto que blablablbablablablab</p>
         </Link>
@@ -20,6 +20,11 @@ const home=()=>
     <Link to='/dreamer'>
         <h3>New Project</h3>
         <p>Este es el proyecto que blablablbablablablab</p>
+        </Link>
+
+    <Link to='/signup'>
+        <h3>Sign Up</h3>
+        <p>LOGGEATE AQUI</p>
         </Link>
 
     </div>

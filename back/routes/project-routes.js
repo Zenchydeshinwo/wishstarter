@@ -5,7 +5,7 @@ const router  = express.Router();
 
 const mongoose = require('mongoose');
 
-const Project = require('../models/project-model');
+const Project = require('../models/Project');
 
 
 // POST route => to create a new project
@@ -14,7 +14,8 @@ router.post('/projects', (req, res, next)=>{
   Project.create({
     title: req.body.title,
     description: req.body.description,
-    tasks: []
+    tasks: [],
+    owner: req.user._id 
   })
     .then(response => {
       res.json(response);

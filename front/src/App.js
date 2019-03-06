@@ -9,6 +9,7 @@ import Makers from './Components/Projects/Makers';
 import Signup from './Components/Auth/SignUp'
 import AuthService from './Components/Auth/Auth-service';
 import Navbar from './Components/navbar/Navbar';
+import Login from './Components/Auth/Login';
 
 class App extends Component {
   constructor(props){
@@ -51,7 +52,9 @@ class App extends Component {
         <Route path='/dreamer' component={NewProject}/>
         <Route path='/project' component={Projects}/>
         <Route path='/project/:projectId' component={SingleProject}/>
+
         <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser}/>}/>
+        <Route exact path='/login' render={() => <Login getUser={this.getTheUser}/>}/>
           </Switch>
         </div>
       );
@@ -69,8 +72,9 @@ class App extends Component {
         <Route path='/project/:projectId' component={SingleProject}/>
 
         <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser}/>}/>
-        <Route exact path="/projects" component={ProjectList}/>
-        <Route exact path="/projects/:id" component={ProjectDetails} />
+        <Route exact path='/login' render={() => <Login getUser={this.getTheUser}/>}/>
+        {/* <Route exact path="/projects" component={ProjectList}/>
+        <Route exact path="/projects/:id" component={ProjectDetails} /> */}
 
 
         </Switch>

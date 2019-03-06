@@ -22,7 +22,7 @@ render()
 {
     return(
         <div className="Project">
-        <Link to='/'>Back</Link>
+        <Link to='/'>Home</Link>
         {this.state.project.map((project,idx)=>
         {
             return <div key={idx}>

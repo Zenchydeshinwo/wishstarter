@@ -24,8 +24,13 @@ const home=()=>
 
     <Link to='/signup'>
         <h3>Sign Up</h3>
-        <p>LOGGEATE AQUI</p>
+        <p>SIGN UP Aqui</p>
         </Link>
+
+     <Link to='/login'>
+        <h3>Log</h3>
+        <p>LOGGEATE AQUI</p>
+        </Link>    
 
     </div>
     )

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import AuthService from '../Auth/Auth-service';
+import './Navbar.css'
 
 class Navbar extends Component {
   constructor(props){
@@ -27,15 +28,16 @@ class Navbar extends Component {
     if(this.state.loggedInUser){
       return(
         <nav className="nav-style">
-          <ul>
-            <li>Welcome, {this.state.loggedInUser.username}</li>
-            <li><Link to='/projects' style={{ textDecoration: 'none' }}>Projects</Link></li>
+          
+            <h2>Welcome {this.state.loggedInUser.username}</h2>
+            <ul>
+            {/* <li><Link to='/projects' style={{ textDecoration: 'none' }}>Projects</Link></li> */}
             <li>
               <Link to='/'>
                 <button onClick={() => this.logoutUser()}>Logout</button>
               </Link>
             </li>
-          </ul>
+            </ul>
         </nav>
       )
     } else {

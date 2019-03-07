@@ -22,7 +22,7 @@ render()
 {
     return(
         <div className="Maker">
-        <Link to='/'>Back</Link>
+        <Link to='/'>Home</Link>
         {this.state.maker.map((maker,idx)=>
         {
             return <div key={idx}>

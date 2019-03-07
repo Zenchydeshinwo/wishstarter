@@ -24,8 +24,7 @@ class App extends Component {
       this.service
         .loggedin()
         .then(response => {
-          console.log("setting state to");
-          console.log(response);
+          
           debugger
           this.setState({
             loggedInUser: response
@@ -53,16 +52,16 @@ class App extends Component {
   render() {
     debugger
     if (this.state.loggedInUser !== null) {
-      //estoy logeado
+      //console.log('Objet', this.state.loggedInUser._id)
       return (
         <div className="App">
           <Navbar userInSession={this.state.loggedInUser} getUser={this.getTheUser} />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/all" component={Projects} />
+            {/* <Route path="/all" component={Projects} /> */}
             <Route exact path="/makers" component={Makers} />
-            <Route path="/dreamer" component={NewProject} />
-            <Route path="/project" component={Projects} />
+            <Route path="/dreamer" component={NewProject}  />
+            <Route path="/projects" component={Projects} />
             <Route path="/project/:projectId" component={SingleProject} />
 
             
@@ -80,7 +79,7 @@ class App extends Component {
             getUser={this.getTheUser}
           />
           <Switch>
-            <Route path="/all" component={Projects} />
+            {/* <Route path="/all" component={Projects} /> */}
             <Route exact path="/makers" component={Makers} />
             <Route path="/project" component={Projects} />
             <Route path="/project/:projectId" component={SingleProject} />

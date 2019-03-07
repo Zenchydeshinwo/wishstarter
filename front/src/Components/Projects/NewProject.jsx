@@ -1,3 +1,4 @@
+//import React from react
 import React, { Component } from 'react';
 import Projectservice from './Project-service';
 
@@ -6,7 +7,9 @@ import { Link } from 'react-router-dom';
 
 
 class NewProject extends Component {
+  
   constructor(props){
+    //console.log(this.props.key)
     super(props);
     this.state = { 
       title: '', 
@@ -16,7 +19,7 @@ class NewProject extends Component {
     };
     this.action = new Projectservice();
   }
-
+  
   // handleChange() and handleSubmit() will be added here
   handleTitleSubmit = (event) => {
     event.preventDefault();
@@ -28,9 +31,8 @@ class NewProject extends Component {
       this.setState({
         title: "", 
         description: ""
-        
     });
-    this.props.getUser(response)
+   // this.props.getUser(response)
     
     console.log('Esto es para ver que dato me llega en el response de user', response)
       
@@ -44,7 +46,8 @@ class NewProject extends Component {
   }
 
   render(){
-    console.log('hi!!!')
+    
+    
     return(
       // more code will be added here
       <div>
@@ -56,10 +59,11 @@ class NewProject extends Component {
     <input type='text' name='title' value={this.state.title} onChange={eve=>this.handleChange(eve)} />
     <br/><br/>
     
+
     <label> Description </label>
     <input type='text' name='description' value={this.state.description} onChange={eve=>this.handleChange(eve)} />
     <br/><br/>
-
+      
     <input type='submit' value='NewProject'/>
 
     </form>

@@ -6,7 +6,7 @@ const home=()=>
     return(
     <div>
     <h3>HOME :)</h3>
-    <Link to='/all'>
+    <Link to='/projects'>
         <h3>All Projects</h3>
         <p>Este es el proyecto que blablablbablablablab</p>
         </Link>

@@ -9,7 +9,7 @@ const Project = require('../models/Project');
 
 
 // POST route => to create a new project
-router.post('/projects', (req, res, next)=>{
+router.post('/project', (req, res, next)=>{
  
   Project.create({
     title: req.body.title,

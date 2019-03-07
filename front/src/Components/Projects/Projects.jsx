@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Projectservice from './Project-service'
-
+import EditProject from './EditProject';
+import ReactPlayer from 'react-player'
+import './Projects.css'
 
 class Projects extends Component{
     constructor()
@@ -38,6 +40,20 @@ render()
             {/* <p>{project.description}</p> */}
             <p>Dreamer: {project.title}</p>
             {/* <p>Description: {project.description}</p> */}
+            <div className='video'>
+            <ReactPlayer
+                url={project.video}
+                className='react-player'
+               // playing='true'
+                width='20%'
+                height='5%'
+            />
+            </div>
+            <Link
+                    to={`/project/${project._id}`}
+                    key={project._id} >Ver Proyecto<li key={idx}><div><span>{project.name}</span></div></li>
+            </Link>
+            
         </div>
         })}
     

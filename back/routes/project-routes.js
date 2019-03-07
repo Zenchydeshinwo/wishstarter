@@ -14,6 +14,7 @@ router.post('/projects', (req, res, next)=>{
   Project.create({
     title: req.body.title,
     description: req.body.description,
+    video:req.body.video,
     tasks: [],
     owner: req.user._id 
   })
@@ -38,8 +39,8 @@ router.get('/projects', (req, res, next) => {
 });
 
 // GET route => to get a specific project/detailed view
-router.get('/projects/:id', (req, res, next)=>{
-
+router.get('/project/:id', (req, res, next)=>{
+  console.log('EL NUMERO HA LLEGADO')
   if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
     res.status(400).json({ message: 'Specified id is not valid' });
     return;
@@ -47,10 +48,10 @@ router.get('/projects/:id', (req, res, next)=>{
 
   // our projects have array of tasks' ids and 
   // we can use .populate() method to get the whole task objects
-  //                                   ^
+  //           .populate('tasks')                       ^
   //                                   |
   //                                   |
-  Project.findById(req.params.id).populate('tasks')
+  Project.findById(req.params.id)
     .then(response => {
       res.status(200).json(response);
     })
@@ -67,8 +68,8 @@ router.put('/projects/:id', (req, res, next)=>{
     return;
   }
 
-  Project.findByIdAndUpdate(req.params.id, req.body)
-    .then(() => {
+  Project.findByIdAndUpdate(req.params.id,req.body,{new:true})
+    .then((proyect) => {
       res.json({ message: `Project with ${req.params.id} is updated successfully.` });
     })
     .catch(err => {

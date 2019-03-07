@@ -44,8 +44,10 @@ class Navbar extends Component {
       return ( 
         <nav className="nav-style">
           <ul>
+            <div>
             <li><Link to='/login' style={{ textDecoration: 'none' }}>Login</Link></li>
             <li><Link to='/signup' style={{ textDecoration: 'none' }}>Signup</Link></li>
+            </div>
           </ul>
         </nav>
       )

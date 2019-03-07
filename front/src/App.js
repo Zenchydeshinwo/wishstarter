@@ -10,6 +10,7 @@ import Signup from "./Components/Auth/SignUp";
 import AuthService from "./Components/Auth/Auth-service";
 import Navbar from "./Components/navbar/Navbar";
 import Login from "./Components/Auth/Login";
+import EditProject from "./Components/Projects/EditProject"
 
 class App extends Component {
   constructor(props) {
@@ -62,8 +63,7 @@ class App extends Component {
             <Route exact path="/makers" component={Makers} />
             <Route path="/dreamer" component={NewProject}  />
             <Route path="/projects" component={Projects} />
-            <Route path="/project/:projectId" component={SingleProject} />
-
+            <Route exact path="/project/:id" component={EditProject} />
             
             {/* <Route exact path="/projects" component={ProjectList}/>
         <Route exact path="/projects/:id" component={ProjectDetails} /> */}
@@ -82,8 +82,7 @@ class App extends Component {
             {/* <Route path="/all" component={Projects} /> */}
             <Route exact path="/makers" component={Makers} />
             <Route path="/project" component={Projects} />
-            <Route path="/project/:projectId" component={SingleProject} />
-
+            <Route exact path="/project/:id" component={EditProject} />
             <Route
               exact
               path="/signup"

@@ -15,8 +15,8 @@ export default class Projectservice {
       this.funAxios = funAxios;
     }
 
-    registerProject=(title,description)=>{
-      return  this.funAxios.post('/projects', {title,description})
+    registerProject=(title,description,video)=>{
+      return  this.funAxios.post('/projects', {title,description,video})
       .then(res=> {return res.data})
       .catch(err => console.log(err))
     }
@@ -27,6 +27,13 @@ export default class Projectservice {
             console.log('esto es res.data', res.data)
             return res.data})
         .catch(err => console.log(err))
+      }
+
+      getProj=(numberid)=>{
+        console.log('PROJECT SERVICE LOG', numberid)
+        return this.funAxios.get('/project/'+numberid)
+        .then(res=>{return res.data})
+        .catch(err=> console.log(err))
       }
 
 

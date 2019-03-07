@@ -1,4 +1,18 @@
 .Home{
+
+    margin:auto;
     display:flex;
-    flex-direction:row
+    flex-direction:row;
+    justify-content: space-around
+}
+
+.projects{
+    display:flex;
+    flex-direction:column
+
+}
+
+.makers{
+    display:flex;
+    flex-direction:column
 }

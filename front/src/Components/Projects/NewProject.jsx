@@ -14,23 +14,27 @@ class NewProject extends Component {
     this.state = { 
       title: '', 
       description: '',
+      video:'',
       dreamer:''
         //Incluir aqui OnbejctId y maker
     };
     this.action = new Projectservice();
   }
+
   
   // handleChange() and handleSubmit() will be added here
   handleTitleSubmit = (event) => {
     event.preventDefault();
     const title = this.state.title;
     const description = this.state.description;
-  
-    this.action.registerProject(title, description)
+    const video=this.state.video
+
+    this.action.registerProject(title, description,video)
     .then( response => {
       this.setState({
         title: "", 
-        description: ""
+        description: "",
+        video:""
     });
    // this.props.getUser(response)
     
@@ -62,6 +66,10 @@ class NewProject extends Component {
 
     <label> Description </label>
     <input type='text' name='description' value={this.state.description} onChange={eve=>this.handleChange(eve)} />
+    <br/><br/>
+
+    <label> Video URL </label>
+    <input type='text' name='video' value={this.state.video} onChange={eve=>this.handleChange(eve)} />
     <br/><br/>
       
     <input type='submit' value='NewProject'/>

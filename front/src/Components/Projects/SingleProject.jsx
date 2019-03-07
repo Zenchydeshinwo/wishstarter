@@ -31,11 +31,10 @@ class SingleProject extends Component {
             <Link to ='/'>Back</Link>
             <h2>Single Proeject</h2>
             <div>
-                <img src={this.state.project.imageurl} alt='Img bir'/>
-                <h1>{this.state.project.name}</h1>
+                <h1>{this.state.project.title}</h1>
                 <p>{this.state.project.description}</p>
-                <p>Dreamer: {this.state.project.dreamer}</p>
-                <p>Maker/s: {this.state.project.maker}</p>
+                {/* <p>Dreamer: {this.state.project.dreamer}</p>
+                <p>Maker/s: {this.state.project.maker}</p> */}
             </div>
         </div>
     )

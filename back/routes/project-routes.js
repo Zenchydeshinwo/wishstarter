@@ -53,7 +53,9 @@ router.get('/project/:id', (req, res, next)=>{
   //                                   |
   Project.findById(req.params.id)
     .then(response => {
+      console.log('Buscando numero',req.params.id)
       res.status(200).json(response);
+      console.log('Ahora json',response)
     })
     .catch(err => {
       res.json(err);

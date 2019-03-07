@@ -20,13 +20,13 @@ class App extends Component {
   }
 
   fetchUser() {
-    debugger
+    
     if (this.state.loggedInUser === null) {
       this.service
         .loggedin()
         .then(response => {
           
-          debugger
+          
           this.setState({
             loggedInUser: response
           });
@@ -44,14 +44,14 @@ class App extends Component {
   }
 
   getTheUser = userObj => {
-    debugger
+    
     this.setState({
       loggedInUser: userObj
     });
   };
 
   render() {
-    debugger
+    
     if (this.state.loggedInUser !== null) {
       //console.log('Objet', this.state.loggedInUser._id)
       return (
@@ -71,7 +71,7 @@ class App extends Component {
         </div>
       );
     } else {
-      debugger
+      
       return (
         <div className="App">
           <Navbar

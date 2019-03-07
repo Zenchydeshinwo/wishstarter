@@ -29,15 +29,18 @@ class EditProject extends Component {
     this.setState({
       title:response.title,
       description:response.description,
-      video:response.description
+      video:response.video
     })
     .catch(error=>console.log(error))
     )    
   }
 
-//   componentDidMount () {
-//     console.log('VEMOS EL ID', this.props.match.params.id)
-// }
+  componentDidMount () {
+    console.log('VEMOS EL ID', this.props.match.params.id)
+    this.getEdProject(this.props.match.params.id)
+    console.log('Estado', this.state)
+
+}
 
  
   
@@ -63,17 +66,16 @@ class EditProject extends Component {
   //   .catch( error => console.log(error) )
   // }
   
-  handleChange = (event) => {  
-    const {name, value} = event.target;
-    this.setState({[name]: value});
-  }
+  // handleChange = (event) => {  
+  //   const {name, value} = event.target;
+  //   this.setState({[name]: value});
+  // }
   
   render(){
     console.log('VEMOS EL ID EN RENDER', this.props.match.params.id)
-    
+    console.log('STATE',this.state)
     //console.log('STTTTTTTTTTTTATE', this.state)
-    this.getEdProject(this.props.match.params.id)
-
+    
     return(
       // more code will be added here
       <div>

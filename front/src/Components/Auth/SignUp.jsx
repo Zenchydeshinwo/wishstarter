@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AuthService from './Auth-service';
 
-import { Link } from 'react-router-dom';
+import { Link , Redirect } from 'react-router-dom';
 
 class Signup extends Component {
   constructor(props){
@@ -9,7 +9,8 @@ class Signup extends Component {
     this.state = { 
       username: '', 
       password: '',
-      mensaje: ''  
+      mensaje: '',
+      redirect:false  
     };
     this.service = new AuthService();
   }
@@ -25,6 +26,7 @@ class Signup extends Component {
       this.setState({
         username: "", 
         password: "",
+        redirect:true
     });
 
       // this.setState({...this.state,
@@ -41,6 +43,9 @@ class Signup extends Component {
   }
 
   render(){
+    if(this.state.redirect){
+     return <Redirect to='/' />
+    }
     return(
       // more code will be added here
       <div>

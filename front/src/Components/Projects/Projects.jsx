@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Projectservice from './Project-service'
 
 
 class Projects extends Component{
@@ -10,11 +11,15 @@ class Projects extends Component{
         this.state={
             project:[]
         }
+    this.projectservice= new Projectservice()
     }
+    
     componentDidMount(){
+       
         //Introducir ahí la direccion de la API, o el acceso a MONGO
-    axios.get("/projects").then(response=>    {
-        this.setState({project:response.data})
+    this.projectservice.requestProject().then(response=>
+          { console.log('ljkbsfvjbsfvlkj', response) 
+        this.setState({project:response})
     })
 }
 

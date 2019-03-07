@@ -9,7 +9,7 @@ const Project = require('../models/Project');
 
 
 // POST route => to create a new project
-router.post('/project', (req, res, next)=>{
+router.post('/projects', (req, res, next)=>{
  
   Project.create({
     title: req.body.title,
@@ -24,10 +24,12 @@ router.post('/project', (req, res, next)=>{
       res.json(err);
     })
 });
-
+//.populate('tasks')
 router.get('/projects', (req, res, next) => {
-  Project.find().populate('tasks')
+  console.log('ROBEEEr')
+  Project.find()
     .then(allTheProjects => {
+      console.log(allTheProjects)
       res.json(allTheProjects);
     })
     .catch(err => {

@@ -21,7 +21,13 @@ export default class Projectservice {
       .catch(err => console.log(err))
     }
 
-
+    requestProject=()=>{
+        return  this.funAxios.get('/projects')
+        .then(res=> {
+            console.log('esto es res.data', res.data)
+            return res.data})
+        .catch(err => console.log(err))
+      }
 
 
 }

@@ -64,20 +64,21 @@ router.get('/project/:id', (req, res, next)=>{
 
 // PUT route => to update a specific project
 router.put('/projects/:id', (req, res, next)=>{
-  console.log('Esto es lululul',req.params)
+  console.log('Esto es lululul',req.body)
   if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
     res.status(400).json({ message: 'Specified id is not valid' });
     return;
   }
 
-  Project.findByIdAndUpdate(req.params.id,req.params,{new:true})
+  Project.findByIdAndUpdate(req.params.id,req.body.state,{new:true})
     .then((body) => {
-      console.log('num ID',num)
-      console.log('JSON de vuelta', res.json)
-      console.log('Body',body)
+      
+      // console.log('JSON de vuelta', res.json)
+      // console.log('Body',body)
       res.json(body);
     })
     .catch(err => {
+      console.log(`Error update ${err}`)
       res.json(err);
     })
 })

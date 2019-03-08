@@ -39,7 +39,7 @@ export default class Projectservice {
         console.log('CHECK STATE llega a SuperEdit se envia al back',state)
         console.log('CHECK numid llega a SuperEdit se envia al back',numid)
 
-        return this.funAxios.put('/projects/'+numid)
+        return this.funAxios.put('/projects/'+numid,{state})
         .then(res=>{
           console.log('Json de vuelta al front', res.data)
           return res.data})

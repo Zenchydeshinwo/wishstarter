@@ -53,12 +53,13 @@ class EditProject extends Component {
     const video = this.state.video;
     //const _id=this.props.match.params.id;
 
-    this.action.superEditProject(this.props.match.params.id,this.state )
+    this.action.superEditProject(this.state,this.props.match.params.id )
     .then( response => {
+      console.log(response)
       this.setState({
-        title: "", 
-        description: "",
-        video:""
+        title: response.title, 
+        description: response.title,
+        video:response.video
     })      
     })
     .catch( error => console.log(error) )
@@ -115,6 +116,10 @@ class EditProject extends Component {
 
     <label> Description </label>
     <input type='text' name='description' onChange={eve=>this.handleChange(eve)} />
+
+    <label> Video </label>
+    <input type='text' name='video' onChange={eve=>this.handleChange(eve)} />
+    <br/><br/>
 
 
     <input type='submit' value='superEditProject'/>

@@ -11,13 +11,13 @@ const home=()=>
         <div className='projects'>
             <Link to='/dreamer'>
             <h3>New Project</h3>
-            <p>Este es el proyecto que blablablbablablablab</p>
+            <p>Aquí puedes registrar nuevos wishes que tengas</p>
             </Link>
 
 
             <Link to='/projects'>
             <h3>All Projects</h3>
-            <p>Este es el proyecto que blablablbablablablab</p>
+            <p>Esta es una lista de todos los wishes</p>
             </Link>
 
         </div>
@@ -26,13 +26,13 @@ const home=()=>
 
         <Link to='/newmakers'>
         <h3>New Maker</h3>
-        <p>Este es la proyecto que blablablbablablablab</p>
+        <p>Aquí puedes registrarte como maker si quieres colaborar en algún proyecto</p>
         </Link>
         
 
     <Link to='/makers'>
         <h3>Makers</h3>
-        <p>Este es la proyecto que blablablbablablablab</p>
+        <p>Este es una lista de todos los makers resgistrados en esta web</p>
         </Link>
 
 

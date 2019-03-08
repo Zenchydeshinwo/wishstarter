@@ -92,7 +92,7 @@ class EditProject extends Component {
     {/* <label> Title </label>
     <input type='text' name='title' value={this.state.title} onChange={eve=>this.handleChange(eve)} /> */}
     <br/><br/>
-      <h1>Este es el id:{this.props.match.params.id}</h1>
+      {/* <h1>Este es el id:{this.props.match.params.id}</h1> */}
       <h1>Este es el proyecto:{this.state.title}</h1>
       <br/><br/>
       <h1>Consiste enlo siguiente:{this.state.description}</h1>

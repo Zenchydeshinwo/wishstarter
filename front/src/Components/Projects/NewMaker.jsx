@@ -59,12 +59,12 @@ class NewMaker extends Component {
     <h1>Introduce los datos de tu perfil de maker</h1>
 
     <form onSubmit={this.handleTitleSubmit}>
-    <label> Title </label>
+    <label> Nombre de maker </label>
     <input type='text' name='named' value={this.state.named} onChange={eve=>this.handleChange(eve)} />
     <br/><br/>
     
 
-    <label> Description </label>
+    <label> Describe tu orientación como maker </label>
     <input type='text' name='orientation' value={this.state.orientation} onChange={eve=>this.handleChange(eve)} />
     <br/><br/>
 

@@ -34,11 +34,10 @@ render()
                 {this.state.maker.map((maker,idx)=>
         {
             return <div key={idx}>
-            <h1>GGGGGGGGGG</h1>
             {/* <img src={maker.imageurl} alt ="Img"></img> */}
-            <p>HOLAAAA</p>
+            <p>Hola esta es la ficha de Maker</p>
             {/* <p>{maker.description}</p> */}
-            <p>Dreamer: {maker.named}</p>
+            <p>Nombre de Maker: {maker.named}</p>
             {/* <p>Description: {maker.description}</p> */}
             {/* <div className='video'>
             <ReactPlayer

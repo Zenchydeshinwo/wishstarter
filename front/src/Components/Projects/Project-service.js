@@ -47,14 +47,15 @@ export default class Projectservice {
 
       }
 
-      // deleteProject=(numberid)=>{
-      //   return this.funAxios.delete('/projects/'+numberid)
-      //   .then(res=>{
-      //     console.log('Eliminado', res.data)
-      //     return res.data})
-      //   .catch(err=> console.log(err))
+      deleteProject=(nud)=>{
+        console.log('el numero de referencia', nud)
+        return this.funAxios.delete('/projects/'+nud)
+        .then(res=>{
+          console.log('Eliminado', res.data)
+          return res.data})
+        .catch(err=> console.log(err))
 
-      // }
+      }
 
 
 }

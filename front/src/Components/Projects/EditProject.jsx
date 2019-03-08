@@ -68,7 +68,11 @@ class EditProject extends Component {
     const {name, value} = event.target;
     this.setState({[name]: value});
   }
-  
+
+  deleteProject = ()=>{
+    console.log('primerpaso',this.props.match.params.id)
+    this.action.deleteProject(this.props.match.params.id)
+  }
   
   render(){
     // console.log('EditProject.jsx match params id', this.props.match.params.id)
@@ -117,7 +121,7 @@ class EditProject extends Component {
     <br></br>
 
     </form>
-    <form onSubmit={this.handleTitleSubmit}>
+    <form onSubmit={this.deleteProject}>
     <input type='submit' value='Delete this project'/>
     <br></br>
 

@@ -3,6 +3,7 @@ import "./App.css";
 import Home from "./Components/Auth/Home";
 import Projects from "./Components/Projects/Projects";
 import NewProject from "./Components/Projects/NewProject";
+import NewMaker from "./Components/Projects/NewMaker";
 import { Switch, Route } from "react-router-dom";
 import SingleProject from "./Components/Projects/SingleProject";
 import Makers from "./Components/Projects/Makers";
@@ -59,6 +60,8 @@ class App extends Component {
           <Navbar userInSession={this.state.loggedInUser} getUser={this.getTheUser} />
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route exact path="/newmakers" component={NewMaker} />
+
             {/* <Route path="/all" component={Projects} /> */}
             <Route exact path="/makers" component={Makers} />
             <Route path="/dreamer" component={NewProject}  />
@@ -80,6 +83,8 @@ class App extends Component {
           />
           <Switch>
             {/* <Route path="/all" component={Projects} /> */}
+            <Route exact path="/newmakers" component={NewMaker} />
+
             <Route exact path="/makers" component={Makers} />
             <Route path="/project" component={Projects} />
             <Route exact path="/project/:id" component={EditProject} />

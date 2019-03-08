@@ -90,6 +90,7 @@ app.use('/', index);
 app.use('/api', require('./routes/auth-routes'));
 app.use('/api', authRoutes);
 
+app.use('/api', require('./routes/maker-routes'));
 app.use('/api', require('./routes/project-routes'));
 app.use('/api', require('./routes/task-routes'));
       

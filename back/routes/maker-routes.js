@@ -5,18 +5,18 @@ const router  = express.Router();
 
 const mongoose = require('mongoose');
 
-const Project = require('../models/Project');
+const Maker = require('../models/Makers');
 
 
 // POST route => to create a new project
-router.post('/projects', (req, res, next)=>{
- 
-  Project.create({
-    title: req.body.title,
-    description: req.body.description,
-    video:req.body.video,
-    tasks: [],
-    owner: req.user._id 
+router.post('/makers', (req, res, next)=>{
+ console.log('LLegamos!!!')
+  Maker.create({
+    named: req.body.named,
+    orientation: req.body.orientation,
+    // video:req.body.video,
+    // tasks: [],
+    // owner: req.user._id 
   })
     .then(response => {
       res.json(response);
@@ -26,12 +26,12 @@ router.post('/projects', (req, res, next)=>{
     })
 });
 //.populate('tasks')
-router.get('/projects', (req, res, next) => {
+router.get('/makers', (req, res, next) => {
   
-  Project.find()
-    .then(allTheProjects => {
+  Maker.find()
+    .then(allTheMakers => {
       // console.log(allTheProjects)
-      res.json(allTheProjects);
+      res.json(allTheMakers);
     })
     .catch(err => {
       res.json(err);
@@ -39,7 +39,7 @@ router.get('/projects', (req, res, next) => {
 });
 
 // GET route => to get a specific project/detailed view
-router.get('/project/:id', (req, res, next)=>{
+router.get('/makers/:id', (req, res, next)=>{
   
   if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
     res.status(400).json({ message: 'Specified id is not valid' });
@@ -51,7 +51,7 @@ router.get('/project/:id', (req, res, next)=>{
   //           .populate('tasks')                       ^
   //                                   |
   //                                   |
-  Project.findById(req.params.id)
+  Maker.findById(req.params.id)
     .then(response => {
       
       res.status(200).json(response);
@@ -63,41 +63,40 @@ router.get('/project/:id', (req, res, next)=>{
 })
 
 // PUT route => to update a specific project
-router.put('/projects/:id', (req, res, next)=>{
-  console.log('Esto es lululul',req.body)
+router.put('/makers/:id', (req, res, next)=>{
+  console.log('Esto es lululul',req.params)
   if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
     res.status(400).json({ message: 'Specified id is not valid' });
     return;
   }
 
-  Project.findByIdAndUpdate(req.params.id,req.body.state,{new:true})
+  Maker.findByIdAndUpdate(req.params.id,req.params,{new:true})
     .then((body) => {
-      
-      // console.log('JSON de vuelta', res.json)
-      // console.log('Body',body)
+      console.log('num ID',num)
+      console.log('JSON de vuelta', res.json)
+      console.log('Body',body)
       res.json(body);
     })
     .catch(err => {
-      console.log(`Error update ${err}`)
       res.json(err);
     })
 })
 
-//DELETE route => to delete a specific project
-router.delete('/projects/:id', (req, res, next)=>{
+// DELETE route => to delete a specific project
+// router.delete('/projects/:id', (req, res, next)=>{
 
-  if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
-    res.status(400).json({ message: 'Specified id is not valid' });
-    return;
-  }
+//   if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
+//     res.status(400).json({ message: 'Specified id is not valid' });
+//     return;
+//   }
 
-  Project.findByIdAndRemove(req.params.id)
-    .then(() => {
-      res.json({ message: `Project with ${req.params.id} is removed successfully.` });
-    })
-    .catch( err => {
-      res.json(err);
-    })
-})
+//   Project.findByIdAndRemove(req.params.id)
+//     .then(() => {
+//       res.json({ message: `Project with ${req.params.id} is removed successfully.` });
+//     })
+//     .catch( err => {
+//       res.json(err);
+//     })
+// })
 
 module.exports = router;

@@ -20,7 +20,7 @@ class Projects extends Component{
        
         //Introducir ahí la direccion de la API, o el acceso a MONGO
     this.projectservice.requestProject().then(response=>
-          { console.log('ljkbsfvjbsfvlkj', response) 
+          {  
         this.setState({project:response})
     })
 }

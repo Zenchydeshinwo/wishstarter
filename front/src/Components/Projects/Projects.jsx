@@ -34,11 +34,11 @@ render()
                 {this.state.project.map((project,idx)=>
         {
             return <div key={idx}>
-            <h1>GGGGGGGGGG</h1>
+            {/* <h1>GGGGGGGGGG</h1> */}
             {/* <img src={project.imageurl} alt ="Img"></img> */}
-            <p>HOLAAAA</p>
+            <p>Hola estes es un proyecto en detalle</p>
             {/* <p>{project.description}</p> */}
-            <p>Dreamer: {project.title}</p>
+            <p>Name of the project: {project.title}</p>
             {/* <p>Description: {project.description}</p> */}
             <div className='video'>
             <ReactPlayer

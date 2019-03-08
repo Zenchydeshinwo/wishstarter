@@ -15,7 +15,7 @@ const flash        = require("connect-flash");
 const authRoutes   = require('./routes/auth-routes'); 
 
 mongoose
-  .connect('mongodb://localhost/back', {useNewUrlParser: true})
+  .connect(pocess.env.MONGO_KEY, {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })

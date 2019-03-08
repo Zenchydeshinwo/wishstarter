@@ -36,44 +36,43 @@ class EditProject extends Component {
   }
 
   componentDidMount () {
-    console.log('VEMOS EL ID', this.props.match.params.id)
+    // console.log('VEMOS EL ID', this.props.match.params.id)
     this.getEdProject(this.props.match.params.id)
-    console.log('Estado', this.state)
+    // console.log('Estado', this.state)
 
 }
 
  
   
-  // handleChange() and handleSubmit() will be added here
-  // handleTitleSubmit = (event) => {
-  //   event.preventDefault();
-  //   const title = this.state.title;
-  //   const description = this.state.description;
-  //   const video = this.state.video;
+  //handleChange() and handleSubmit() will be added here
 
-  //   this.action.editProject(title, description, video)
-  //   .then( response => {
-  //     this.setState({
-  //       title: "", 
-  //       description: "",
-  //       video:""
-  //   });
-  //  this.props.getUser(response)
-    
-  //   console.log('Awui estamos editando', response)
-      
-  //   })
-  //   .catch( error => console.log(error) )
-  // }
+  handleTitleSubmit = (event) => {
+    event.preventDefault();
+    const title = this.state.title;
+    const description = this.state.description;
+    const video = this.state.video;
+    //const _id=this.props.match.params.id;
+
+    this.action.superEditProject(this.props.match.params.id,this.state )
+    .then( response => {
+      this.setState({
+        title: "", 
+        description: "",
+        video:""
+    })      
+    })
+    .catch( error => console.log(error) )
+  }
   
-  // handleChange = (event) => {  
-  //   const {name, value} = event.target;
-  //   this.setState({[name]: value});
-  // }
+  handleChange = (event) => {  
+    const {name, value} = event.target;
+    this.setState({[name]: value});
+  }
+  
   
   render(){
-    console.log('VEMOS EL ID EN RENDER', this.props.match.params.id)
-    console.log('STATE',this.state)
+    // console.log('EditProject.jsx match params id', this.props.match.params.id)
+    // console.log('EditProject.jsx State',this.state)
     //console.log('STTTTTTTTTTTTATE', this.state)
     
     return(
@@ -84,28 +83,46 @@ class EditProject extends Component {
       <Link to={'/'}>Home</Link>
     <h1>Edita tu proyecyo aquí</h1>
 
-    <form onSubmit={this.handleTitleSubmit}>
+    
     {/* <label> Title </label>
     <input type='text' name='title' value={this.state.title} onChange={eve=>this.handleChange(eve)} /> */}
     <br/><br/>
-      <h1>{this.state.title}</h1>
+      <h1>Este es el id:{this.props.match.params.id}</h1>
+      <h1>Este es el proyecto:{this.state.title}</h1>
+      <br/><br/>
+      <h1>Consiste enlo siguiente:{this.state.description}</h1>
     <div>
             <ReactPlayer
                 url={this.state.video}
                 className='react-player'
-                playing='stop'
-                width='10%'
-                height='10%'
+               // playing
+                width='20%'
+                height='5%'
             />
             </div>
 
     {/* <label> Description </label>
     <input type='text' name='description' value={this.state.description} onChange={eve=>this.handleChange(eve)} /> */}
     <br/><br/>
-      
-    <input type='submit' value='EditProject'/>
+    <form onSubmit={this.handleTitleSubmit}>
+
+    <label> Title </label>
+    <input type='text' name='title'  onChange={eve=>this.handleChange(eve)} />
+
+    <label> Description </label>
+    <input type='text' name='description' onChange={eve=>this.handleChange(eve)} />
+
+
+    <input type='submit' value='superEditProject'/>
+    <br></br>
 
     </form>
+    <form onSubmit={this.handleTitleSubmit}>
+    <input type='submit' value='Delete this project'/>
+    <br></br>
+
+    </form>
+
     </div>
     )
   }

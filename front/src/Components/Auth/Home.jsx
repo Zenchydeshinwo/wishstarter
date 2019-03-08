@@ -24,8 +24,8 @@ const home=()=>
 
         <div className='makers'>
 
-        <Link to='/makers'>
-        <h3>Makers</h3>
+        <Link to='/newmakers'>
+        <h3>New Maker</h3>
         <p>Este es la proyecto que blablablbablablablab</p>
         </Link>
         

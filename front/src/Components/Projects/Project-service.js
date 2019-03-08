@@ -24,17 +24,37 @@ export default class Projectservice {
     requestProject=()=>{
         return  this.funAxios.get('/projects')
         .then(res=> {
-            console.log('esto es res.data', res.data)
             return res.data})
         .catch(err => console.log(err))
       }
 
       getProj=(numberid)=>{
-        console.log('PROJECT SERVICE LOG', numberid)
+        console.log('Estamos en get Project')
         return this.funAxios.get('/project/'+numberid)
         .then(res=>{return res.data})
         .catch(err=> console.log(err))
       }
+
+      superEditProject=(state,numid)=>{
+        console.log('CHECK STATE llega a SuperEdit se envia al back',state)
+        console.log('CHECK numid llega a SuperEdit se envia al back',numid)
+
+        return this.funAxios.put('/projects/'+numid)
+        .then(res=>{
+          console.log('Json de vuelta al front', res.data)
+          return res.data})
+        .catch(err=> console.log(err))
+
+      }
+
+      // deleteProject=(numberid)=>{
+      //   return this.funAxios.delete('/projects/'+numberid)
+      //   .then(res=>{
+      //     console.log('Eliminado', res.data)
+      //     return res.data})
+      //   .catch(err=> console.log(err))
+
+      // }
 
 
 }
